@@ -415,6 +415,10 @@ class DanfeNFePHP extends CommonNFePHP implements DocumentoNFePHP
                     $this->entrega->getElementsByTagName("xLgr")->item(0)->nodeValue : '';
             $txRetnro = !empty($this->entrega->getElementsByTagName("nro")->item(0)->nodeValue) ?
                     $this->entrega->getElementsByTagName("nro")->item(0)->nodeValue : 's/n';
+                    
+            $txRetCep = !empty($this->entrega->getElementsByTagName("CEP")->item(0)->nodeValue) ?
+                    $this->entrega->getElementsByTagName("CEP")->item(0)->nodeValue : '';                    
+                    
             $txRetxCpl = $this->__simpleGetValue($this->entrega, "xCpl", " - ");
             $txRetxBairro = !empty($this->entrega->getElementsByTagName("xBairro")->item(0)->nodeValue) ?
                     $this->entrega->getElementsByTagName("xBairro")->item(0)->nodeValue : '';
@@ -426,7 +430,7 @@ class DanfeNFePHP extends CommonNFePHP implements DocumentoNFePHP
                 $this->textoAdic .= ". \r\n";
             }
             $this->textoAdic .= "LOCAL DE ENTREGA : " .$txRetCNPJ. '-' . $txRetxLgr . ', '
-                    . $txRetnro . ' ' . $txRetxCpl . ' - ' . $txRetxBairro . ' ' .$txRetxMun
+                    . $txRetnro . ' ' . $txRetxCpl . ' - ' . $txRetCep ' - ' . $txRetxBairro . ' ' .$txRetxMun
                     . ' - ' .$txRetUF . "\r\n";
         }
         //informações adicionais
